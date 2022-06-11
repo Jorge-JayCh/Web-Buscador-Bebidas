@@ -1,21 +1,28 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Formulario from './components/Formulario';
 import Header from './components/Header';
+import ListadoRecetas from './components/ListadoRecetas';
+import CategoriasProvider from './context/CategoriasContext';
+import ModalProvider from './context/ModalContext';
+import RecetasProvider from './context/RecetasContext';
 
 
 function App() {
   return (
-    <Fragment>
-      <Header />
+    <CategoriasProvider>
+      <RecetasProvider>
+        <ModalProvider>
+          <Header />
+          <div className='container mt-5'>
+            <div className='row'>
+              <Formulario/>
+            </div>
 
-      <div className='container mt-5'>
-        <div className='row'>
-          <Formulario/>
-        </div>
-      </div>
-
-
-    </Fragment>
+            <ListadoRecetas />
+          </div>
+        </ModalProvider>
+      </RecetasProvider>
+    </CategoriasProvider>
   );
 }
 
